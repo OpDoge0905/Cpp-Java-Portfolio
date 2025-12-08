@@ -20,8 +20,9 @@ public class TicTacToe{
         //Game Section
         while(true){
             printBoard(gameBoard, roundInd, boardSize);
-            System.out.println("Time for " + currPlayer);
-            System.out.println("Insert Row (0-"+(boardSize-1)+") and Column (0-"+(boardSize-1)+")");
+            System.out.println();
+            System.out.println(" || Time for " + currPlayer + " || ");
+            System.out.println(" || Insert Row (0-"+(boardSize-1)+") and Column (0-"+(boardSize-1)+") || ");
             
             int row = scanner.nextInt();
             int col = scanner.nextInt();
@@ -35,7 +36,7 @@ public class TicTacToe{
             }
             else{
                 gameBoard[row][col] = currPlayer;
-                checkWinner(gameBoard, boardSize);
+                checkWinner(gameBoard, boardSize, currPlayer);
                 currPlayer = currPlayer=='O'? 'X':'O';
                 roundInd++;
             }
@@ -46,7 +47,13 @@ public class TicTacToe{
     }
 
     public static void printBoard(char[][] gameBoard, int roundInd, int boardSize){
-        System.out.println("=== Round " + roundInd + " ===");
+        if(roundInd>=0){
+            System.out.println("=== Round " + roundInd + " ===\n");
+        }
+        else{
+            System.out.println("=== RESULT ===\n");
+        }
+        
         for(int row=0; row<boardSize; row++){
             for(int col=0; col<boardSize; col++){
                 System.out.print(gameBoard[row][col] + " ");
@@ -55,11 +62,13 @@ public class TicTacToe{
         }       
     }
 
-    public static void checkWinner(char[][] gameBoard, int boardSize){
+    public static void checkWinner(char[][] gameBoard, int boardSize, char currPlayer){
         for(int row=0; row<boardSize; row++){
             if (gameBoard[row][0]!='-'){
                 if((gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2])){
-                    System.out.println("WIN");
+                    System.out.println(" || \"" + currPlayer + "\"" + " WINS THE GAME!! || ");
+                    printBoard(gameBoard, -1, boardSize);
+                    System.exit(0);
                 }
             }
         }
