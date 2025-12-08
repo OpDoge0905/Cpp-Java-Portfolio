@@ -129,7 +129,7 @@ public static void checkWinner(char[][] gameBoard, int boardSize, char currPlaye
                 break;
             }
         }
-        if(tlbrWin){
+        if(trblWin){
             announceWinner(gameBoard, boardSize, currPlayer);
         }
     }
