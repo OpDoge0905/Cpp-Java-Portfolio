@@ -35,6 +35,7 @@ public class TicTacToe{
             }
             else{
                 gameBoard[row][col] = currPlayer;
+                checkWinner(gameBoard, boardSize);
                 currPlayer = currPlayer=='O'? 'X':'O';
                 roundInd++;
             }
@@ -51,13 +52,15 @@ public class TicTacToe{
                 System.out.print(gameBoard[row][col] + " ");
             }
             System.out.println();
-        }
+        }       
     }
 
     public static void checkWinner(char[][] gameBoard, int boardSize){
         for(int row=0; row<boardSize; row++){
             if (gameBoard[row][0]!='-'){
-                if((gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2]))
+                if((gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2])){
+                    System.out.println("WIN");
+                }
             }
         }
     }
