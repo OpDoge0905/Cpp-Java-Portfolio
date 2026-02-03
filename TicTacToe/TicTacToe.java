@@ -4,7 +4,7 @@ public class TicTacToe{
     public static void main(String[] args){
         System.out.println("Welcome to TicTacToe");
         //Game Setting
-        int boardSize = 3; //Change the Board Size
+        int boardSize = 5; //Change the Board Size
         char gameBoard[][] = new char[boardSize][boardSize];
         int roundInd = 0;
         char currPlayer = 'O';
